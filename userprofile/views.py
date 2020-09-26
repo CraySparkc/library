@@ -2,12 +2,13 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.views import logout
-from django.shortcuts import redirect
+
 from django.urls import reverse
 
 from navigation import views
 
 # Create your views here.
+from userprofile.forms import UserForm
 
 
 def profile(request):
@@ -35,4 +36,19 @@ def user_login(request):
     else:
         return HttpResponseRedirect(reverse('index'))
 
+def register(request):
+    registered = False
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+            registered = True
+
+        else:
+            print(user_form.errors)
+    else:
+        user_form = UserForm()
+    return render(request, 'userprofile/register.html', {'user_form': user_form, })
 

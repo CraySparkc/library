@@ -16,10 +16,10 @@
         </div>
 
         {% if user.is_anonymous %}
-            <a href="#">Регистрация</a>
-            <a href="#" class="signin"><img src="{% static "img/lk.svg" %}" alt="#" onclick="document.getElementById('id01').style.display='block'"></a>
+            <a href="{% url 'register' %}">Регистрация</a>
+            <img class="signin" src="{% static "img/lk.svg" %}" alt="#" onclick="document.getElementById('id01').style.display='block'">
         {% else %}
-        Привет <a href="/userprofile/">{{ user.username }}!</a> / <a href="/userprofile/logout/">Выйти</a>
+            <a href="/userprofile/logout/">Выйти</a>|<img class="signin" src="{% static "img/lk.svg" %}" alt="#">
         {% endif %}
 
     </header>
