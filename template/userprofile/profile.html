@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% if user.is_anonymous %}
+    Еще нет аккаунта? <a href="/userprofile/register/">Зарегистрируйся</a>
+{% else %}
+    {% block main %}
+        Тут будет профиль
+        Добро пожаловать {{ user.username }}!
+    {% endblock %}
+{% endif %}

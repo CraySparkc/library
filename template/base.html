@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <title>{% block title%} {% endblock %}</title>
+</head>
+<body>
+{% block menu %}
+
+    <!-- Блок с авторизацией -->
+    <div>
+        {% if user.is_anonymous %}
+        <a href="#">Войти</a> / <a href="#">Регистрация</a>
+        {% else %}
+        Привет <a href="/userprofile/">{{ user.username }}!</a> / <a href="/userprofile/logout/">Выйти</a>
+        {% endif %}
+    </div>
+    <!-- Блок с авторизацией -->
+
+{% endblock %}
+<hr>
+{% block main %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
+</body>
+</html>
