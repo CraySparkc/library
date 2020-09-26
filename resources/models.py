@@ -1,5 +1,5 @@
 from django.db import models
-from navigation.models import Place
+from navigation.models import Place, Library
 
 
 # Create your models here.
@@ -17,6 +17,12 @@ class Autor(models.Model):
 
 class Gener(models.Model):
     name = models.CharField(max_length=40, verbose_name='Название жанра')
+    class Meta:
+        verbose_name = "Жанр"
+        verbose_name_plural = "Жанры"
+
+    def __str__(self):
+        return self.name
 
 
 class Type(models.Model):
@@ -31,7 +37,7 @@ class Type(models.Model):
 
 
 class Stack(models.Model):
-    place = models.ForeignKey(Place)
+    place = models.ForeignKey(Place, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name = 'Стеллаж'
@@ -42,17 +48,25 @@ class Stack(models.Model):
 
 
 class Resource(models.Model):
-    inv = models.CharField(max_length=20, verbose_name='ИНВ')
+    inv = models.CharField(max_length=20, verbose_name='ИНВ', unique=True)
     name = models.CharField(max_length=50, verbose_name='Название')
     desk = models.TextField(verbose_name="Описание")
     publishing = models.CharField(max_length=35, verbose_name='Издатель')
-    autor = models.ForeignKey(Autor)
-    gener = models.ForeignKey(Gener)
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE, verbose_name='Автор')
+    gener = models.ForeignKey(Gener, on_delete=models.CASCADE, verbose_name='Жанр')
     date = models.DateField(verbose_name='Дата публикации')
-    type = models.ForeignKey(Type)
-    stack = models.ForeignKey(Stack)
-    photo = models.ImageField(upload_to='photo_resource', blank=True)
+    type = models.ForeignKey(Type, on_delete=models.CASCADE, verbose_name='Тип ресурса')
+    stack = models.ForeignKey(Stack, on_delete=models.CASCADE, verbose_name='Стеллаж')
+    library = models.ForeignKey(Library, on_delete=models.CASCADE, verbose_name='Библиотека')
+    photo = models.ImageField(upload_to='photo_resource', blank=True, verbose_name='Фото')
     mark = models.CharField(max_length=100, verbose_name='mark')
+
+    class Meta:
+        verbose_name = 'Ресурс'
+        verbose_name_plural = 'Ресурсы'
+
+    def __str__(self):
+        return self.inv + " # " + self.name
 
 
 
