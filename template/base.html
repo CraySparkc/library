@@ -3,26 +3,70 @@
 <head>
     <meta charset="UTF-8">
     {% load staticfiles %}
+    <link rel="stylesheet" href="{% static "css/logging.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
     <title>{% block title%} {% endblock %}</title>
 </head>
 <body>
 {% block menu %}
 
-    <!-- Блок с авторизацией -->
-    <div>
+    <header class="header">
+        <div class="burger header-burger">
+            <span>   </span>
+        </div>
+
         {% if user.is_anonymous %}
-        <a href="#">Войти</a> / <a href="#">Регистрация</a>
+            <a href="#">Регистрация</a>
+            <a href="#" class="signin"><img src="{% static "img/lk.svg" %}" alt="#" onclick="document.getElementById('id01').style.display='block'"></a>
         {% else %}
         Привет <a href="/userprofile/">{{ user.username }}!</a> / <a href="/userprofile/logout/">Выйти</a>
         {% endif %}
-    </div>
-    <!-- Блок с авторизацией -->
+
+    </header>
+
+
+    <div id="id01" class="modal">
+        <form class="modal-content animate" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+
+      <!--<img src="https://c7.hotpng.com/preview/282/22/475/face-man-expressionless-man.jpg" alt="Avatar" class="avatar">-->
+            </div>
+    <br>
+            <h3 style="text-align: center">Авторизация</h3>
+            <div class="container">
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Логин" name="username" required>
+
+                <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Пароль" name="password" required>
+
+                    <button type="submit">отправить данные</button>
+            </div>
+        </form>
+</div>
+
+
+
 
 {% endblock %}
-<hr>
 {% block main %}
 {% endblock %}
 {% block footer %}
+
 {% endblock %}
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<script src="{% static "js/burger.js" %}"></script>
 </body>
 </html>

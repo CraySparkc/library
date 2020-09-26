@@ -1,4 +1,31 @@
 {% extends 'base.html' %}
+
 {% block main %}
-    Hey there! {{ message }}
+    <main>
+
+        <ul class="header__ul">
+          <li class="header__li">Библиотеки</li>
+          <li class="header__li">Контакты   </li>
+          <li class="header__li">F.A.Q. </li>
+        </ul>
+
+        <div class="hello">
+          <form>
+            <input class="hello__input" type="text" placeholder="Что вы ищите?">
+          </form>
+        </div>
+
+      </main>
+
+{% endblock %}
+{% block footer %}
+ <footer class="footer">
+        <ul>
+          <li class="li">
+            <div class="li__item"><a class="li__link" href="#">«Новосибирская государственная областная научная библиотека»</a>
+              <p class="li__description">Советская, 6 / Коммунистическая, 32 / Свердлова, 9 Режим работы: Понедельник-пятница 10:00-20:00 Суббота, воскресенье 10:00-18:00 Последняя пятница месяца - технический день</p>
+            </div>
+          </li>
+        </ul>
+ </footer>
 {% endblock %}
