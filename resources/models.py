@@ -51,15 +51,15 @@ class Resource(models.Model):
     inv = models.CharField(max_length=20, verbose_name='ИНВ', unique=True)
     name = models.CharField(max_length=50, verbose_name='Название')
     desk = models.TextField(verbose_name="Описание")
-    publishing = models.CharField(max_length=35, verbose_name='Издатель')
-    autor = models.ForeignKey(Autor, on_delete=models.CASCADE, verbose_name='Автор')
-    gener = models.ForeignKey(Gener, on_delete=models.CASCADE, verbose_name='Жанр')
+    publishing = models.CharField(max_length=35, verbose_name='Издатель', blank=True)
+    autor = models.ForeignKey(Autor, on_delete=models.CASCADE, verbose_name='Автор', blank=True)
+    gener = models.ForeignKey(Gener, on_delete=models.CASCADE, verbose_name='Жанр', blank=True, default=None)
     date = models.DateField(verbose_name='Дата публикации')
     type = models.ForeignKey(Type, on_delete=models.CASCADE, verbose_name='Тип ресурса')
     stack = models.ForeignKey(Stack, on_delete=models.CASCADE, verbose_name='Стеллаж')
     library = models.ForeignKey(Library, on_delete=models.CASCADE, verbose_name='Библиотека')
     photo = models.ImageField(upload_to='photo_resource', blank=True, verbose_name='Фото')
-    mark = models.CharField(max_length=100, verbose_name='mark')
+    mark = models.CharField(max_length=100, verbose_name='mark', blank=True)
 
     class Meta:
         verbose_name = 'Ресурс'

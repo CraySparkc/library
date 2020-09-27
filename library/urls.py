@@ -21,5 +21,6 @@ from navigation import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('userprofile/', include('userprofile.urls')),
+    path('resources/', include('resources.urls')),
     path('admin/', admin.site.urls),
 ]
