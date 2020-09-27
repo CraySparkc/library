@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>main</title>
+    <link rel="stylesheet" href="styles/style.css"/>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="managePanel">
+        <h2 class="h2">Основные инструменты</h2>
+        <div class="main-btns">
+          <div class="btn">
+            <div class="room-btn"></div>
+          </div>
+          <div class="btn">
+            <div class="text-btn">Т</div>
+          </div>
+          <div class="btn">
+            <div class="wall-btn"></div>
+          </div>
+          <div class="btn">
+            <div class="stairs-btn"><img src="./images/stairs.svg" alt="stairs"/></div>
+          </div>
+          <div class="btn">
+            <div class="wall-btn"></div>
+          </div>
+          <div class="btn">
+            <div class="wall-btn"></div>
+          </div>
+        </div>
+        <h2 class="h2">Текущий</h2>
+        <div class="correctionPanel">
+          <p class="managePanel-plaseholder">Выберите элемент для начала работы</p>
+        </div>
+        <div class="tools">
+          <h2 class="h2">Инструменты</h2>
+          <div class="icons">
+            <div class="icons-img" id="dwld"><img src="./images/download.svg" alt="cd"/></div>
+            <div class="icons-img" id="cdwld"><img src="./images/cd.svg" alt="cd"/></div>
+          </div>
+        </div>
+      </div>
+      <canvas id="canvas" width="1000" height="700"> </canvas>
+    </div>
+    <script src="./js/fabric.min.js"> </script>
+    <script src="./js/app.js"> </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title main
+        link(rel="stylesheet" href="styles/style.css")
+    body
+        .wrapper
+            .managePanel
+                h2.h2 Основные инструменты
+                .main-btns
+                    .btn
+                        .room-btn
+                    .btn
+                        .text-btn Т
+                    .btn
+                        .wall-btn
+                    .btn
+                        .stairs-btn
+                            img(src="./images/stairs.svg" alt="stairs")
+                    .btn
+                        .wall-btn
+                    .btn
+                        .wall-btn
+                h2.h2 Текущий
+                .correctionPanel
+                    p.managePanel-plaseholder Выберите элемент для начала работы
+                .tools
+                    h2.h2 Инструменты
+                    .icons
+                        .icons-img#dwld
+                            img(src="./images/download.svg", alt="cd")
+                        .icons-img#cdwld
+                            img(src="./images/cd.svg", alt="cd")
+            canvas#canvas(width="1000" height="700") 
+        script(src="./js/fabric.min.js")  
+        script(src="./js/app.js")  
+
+
+
+
+

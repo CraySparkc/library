@@ -1,0 +1,56 @@
+// This project variables
+// ......
+// !!! my variables templates !!!
+// breakpoints, desktop first
+$k4: 1441px; // min
+$laptop:1024px; // max
+$tablet: 768px; // max
+$mobileL: 425px; // max
+$mobileM: 375px; // max
+$mobileS: 320px; // max
+// transition
+$bgc_tr: background-color 0.3 linear;
+$op_tr: opacity 0.3 linear;
+// flex
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex-spb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+// placeholder
+@mixin form-font {
+    color: #000000;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 10px;
+    font-weight: 400;
+}
+@mixin placeholder {
+    input::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+        @include form-font;
+    }
+    input::-moz-placeholder,
+    textarea::-moz-placeholder {
+        @include form-font;
+    }
+    input:-moz-placeholder,
+    textarea:-moz-placeholder {
+        @include form-font;
+    }
+    input:-ms-input-placeholder,
+    textarea:-ms-input-placeholder {
+        @include form-font;
+    }
+}
+// adaptive font
+$maxWidth: 1700;
+@mixin adaptive-font($pcSize, $mobSize) {
+    $addSize: $pcSize - $mobSize;
+    $maxWidth: $maxWidth - 320;
+    font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
